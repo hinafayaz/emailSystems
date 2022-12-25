@@ -27,3 +27,4 @@ class CreateMessageMutation(graphene.Mutation):
 
         compose=Message.objects.create(sender=sender,recipient=recipient,subject=subject,body=body)
         return CreateMessageMutation(compose=compose) 
+        

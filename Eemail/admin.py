@@ -8,3 +8,4 @@ from .models import*
 #admin.site.register(Email)
 admin.site.register(User)
 admin.site.register(Message)
+admin.site.register(Emailhistory)

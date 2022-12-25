@@ -34,3 +34,13 @@ class Message(models.Model):
 
 
 
+class Emailhistory(models.Model):
+   sender=models.EmailField(blank=True)
+   recipient=models.EmailField(blank=True)
+   subject=models.CharField(max_length=50)
+   body=models.TextField()
+   created_on=models.DateTimeField(auto_now_add=True)
+
+   def __str__(self):
+     return self.subject
+

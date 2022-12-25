@@ -1,4 +1,6 @@
 import graphene
+from django.core.exceptions import ValidationError
+from smtplib import SMTPDataError
 from django.core.mail import send_mail
 from django.conf import settings
 from graphene_django import DjangoObjectType
@@ -19,7 +21,8 @@ def  resolve_sendmail(self,info,**kwargs):
     try:
       result=send_mail(subject=subject,message=body,from_email=settings.EMAIL_HOST_USER,recipient_list=[to_email],fail_silently=False)
     except SMTPDataError:
-     raise Exception ("email not sent")
+     #raise Exception ("email not sent")
+     raise ValidationError({"internet": ValidationError("You dont have internet connection.",code=123,) } )
 
     return "message send successfully"  
 
